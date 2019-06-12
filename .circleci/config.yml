@@ -7,7 +7,7 @@ jobs:
     environment:
       DEPLOYMENT_NAME: ci-cd
       PROJECT_ID: playground-s-11-615780
-      CLUSTER_NAME: ci-cd
+      CLUSTER_NAME: cluster-name
       CLUSTER_NAME_STAG: ci-cd-stag
       CLOUDSDK_COMPUTE_ZONE: europe-north1-a
       CONTAINER_NAME: ci-cd
