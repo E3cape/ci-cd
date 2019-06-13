@@ -60,6 +60,8 @@ jobs:
               gcloud docker -- push gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               date
               kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
+              date
               kubectl rollout status deployments/ci-cd -w
+              date
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
