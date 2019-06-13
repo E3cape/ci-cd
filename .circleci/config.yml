@@ -61,7 +61,6 @@ jobs:
               curl http://35.228.42.193:3000/
               echo "Zzz Zzz Resident sleeper"
               date
-              sleep 40
               date
               curl http://35.228.42.193:3000/
               kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
