@@ -63,7 +63,7 @@ jobs:
               date
               date
               curl http://35.228.42.193:3000/
-              kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:111
+              kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               kubectl rollout status deployments/ci-cd -w
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
