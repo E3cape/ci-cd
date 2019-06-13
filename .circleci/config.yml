@@ -80,5 +80,5 @@ workflows:
   version: 2
   Name_of_the_workflow:
     jobs:
-      - one
-      - two
+      - build
+      - test
