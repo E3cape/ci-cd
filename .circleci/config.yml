@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/workspace
     environment:
       DEPLOYMENT_NAME: ci-cd
-      PROJECT_ID: playground-s-11-e55dc5
+      PROJECT_ID: playground-s-11-0a3afb
       CLUSTER_NAME: cluster-name
       CLUSTER_NAME_STAG: ci-cd-stag
       CLOUDSDK_COMPUTE_ZONE: europe-north1-a
