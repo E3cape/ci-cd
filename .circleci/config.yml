@@ -60,7 +60,7 @@ jobs:
               gcloud docker -- push gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               curl http://35.228.32.104:3000/
               echo "Zzz Zzz Resident sleeper"
-	      date
+              date
               sleep 40
               date
               curl http://35.228.32.104:3000/
