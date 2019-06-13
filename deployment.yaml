@@ -25,9 +25,7 @@ spec:
       tier: frontend
   replicas: 3
   strategy: 
-    type: RollingUpdate 
-    rollingUpdate: maxSurge: 1 
-    maxUnavailable: 0
+    type: Recreate
   template:
     metadata:
       labels:
@@ -35,7 +33,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: gcr.io/playground-s-11-615780/ci-cd:0.1.0
+      - image: gcr.io/playground-s-11-595534/ci-cd:0.1.0
         name: ci-cd
         ports:
         - containerPort: 3000
