@@ -61,7 +61,7 @@ jobs:
               echo $(($(date +%s%N)/1000000))
               kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               echo $(($(date +%s%N)/1000000))
-              kubectl rollout status deployments/ci-cd --timeout=4m -w
+              kubectl rollout status deployments/ci-cd -timeout=4m
               echo $(($(date +%s%N)/1000000))
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
