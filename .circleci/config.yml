@@ -66,3 +66,19 @@ jobs:
               echo $(($(date +%s%N)/1000000))
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
+  test:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - run: echo "This is the second job"  
+      - run: |
+          kubectl version
+          kubectl rollout status --timeout=3m
+          
+workflows:
+  version: 2.1
+  Name_of_the_workflow:
+    jobs:
+      - one
+      - two
