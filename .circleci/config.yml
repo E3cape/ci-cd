@@ -61,7 +61,7 @@ jobs:
               echo "Zzz Zzz Resident sleeper"
               date
               date
-              kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
+              kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:1111s
               kubectl rollout status deployments/ci-cd -w
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
