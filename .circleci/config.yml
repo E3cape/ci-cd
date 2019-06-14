@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/workspace
     environment:
       DEPLOYMENT_NAME: ci-cd
-      PROJECT_ID: playground-s-11-0a3afb
+      PROJECT_ID: playground-s-11-e35bef
       CLUSTER_NAME: cluster-name
       CLUSTER_NAME_STAG: ci-cd-stag
       CLOUDSDK_COMPUTE_ZONE: europe-north1-a
@@ -24,6 +24,11 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
+      - run:
+          name: Install nodejs and npm
+          command: |
+            apt install nodejs
+            apt install npm
       - run:
           name: Install node packages
           command: |
@@ -60,6 +65,7 @@ jobs:
               gcloud docker -- push gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               echo $(($(date +%s%N)/1000000))
               kubectl version
+              kubectl rollout status deployments/ci-cd -w --timeout=3m
               kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               echo $(($(date +%s%N)/1000000))
               kubectl rollout status deployments/ci-cd -w --timeout=3m
