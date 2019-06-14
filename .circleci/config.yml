@@ -68,10 +68,9 @@ jobs:
               gcloud docker -- push gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
               echo $(($(date +%s%N)/1000000))
               kubectl version
-              kubectl rollout status deployments/ci-cd -w --timeout=3m
-              kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
+              kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:1111
               echo $(($(date +%s%N)/1000000))
-              kubectl rollout status deployments/ci-cd -w --timeout=4m
+              kubectl rollout status deployments/ci-cd -w --timeout=2m
               echo $(($(date +%s%N)/1000000))
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
