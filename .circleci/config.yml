@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: wecs/circle-ci-gcloud-node:0.1.0
+      - image: google/cloud-sdk
     working_directory: ~/workspace
     environment:
       DEPLOYMENT_NAME: ci-cd
@@ -24,7 +24,14 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-
+      - run:
+          name: Install nodejs and npm
+          command: |
+            curl -sL https://deb.nodesource.com/setup_10.x | bash -
+            apt-get install -y nodejs
+            nodejs --version
+            apt-get install -y npm
+            npm --version
       - run:
           name: Install node packages
           command: |
