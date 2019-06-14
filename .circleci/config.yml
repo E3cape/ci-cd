@@ -56,6 +56,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               set -e
+              date
               echo "Deploying to ${DEPLOYMENT_ENVIRONMENT}"
               echo $ACCOUNT_KEY_STAGING > service_key.txt
               base64 -i service_key.txt -d > ${HOME}/gcloud-service-key.json
@@ -66,11 +67,11 @@ jobs:
               gcloud --quiet container clusters get-credentials $CLUSTER_NAME
               docker build -t gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1 .
               gcloud docker -- push gcr.io/${PROJECT_ID}/${REG_ID}:$CIRCLE_SHA1
-              echo $(($(date +%s%N)/1000000))
+              date
               kubectl version
               kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/${REG_ID}:1111
-              echo $(($(date +%s%N)/1000000))
-              kubectl rollout status deployments/ci-cd -w --timeout=2m
-              echo $(($(date +%s%N)/1000000))
+              date
+              kubectl rollout status deployments/ci-cd -w --timeout=3m
+              date
               echo " Successfully deployed to ${DEPLOYMENT_ENVIRONMENT}"
             fi  
