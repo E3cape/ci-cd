@@ -23,7 +23,7 @@ spec:
     matchLabels:
       app: ci-cd
       tier: frontend
-  replicas: 20
+  replicas: 10
   strategy: 
     type: RollingUpdate
     rollingUpdate:
