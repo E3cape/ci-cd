@@ -36,7 +36,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: gcr.io/playground-s-11-0a3afb/ci-cd:0.1.0
+      - image: gcr.io/playground-s-11-e35bef/ci-cd:0.1.0
         name: ci-cd
         ports:
         - containerPort: 3000
