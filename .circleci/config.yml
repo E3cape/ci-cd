@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Install nodejs and npm
           command: |
-            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            curl -sL https://deb.nodesource.com/setup_10.x | -E bash -
             apt-get install -y nodejs
             nodejs --version
             apt install -y npm
